@@ -1,0 +1,48 @@
+
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.wrapper {
+  width: 100%;
+}
+.enablebutton{
+  padding:10px 20px;
+  color:white;
+  background-color: black;;
+  font-size: 20px;
+  width:100%;
+  margin-bottom: 5px;
+}
+
+
+.Accordian {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Reduced gap between accordion items */
+}
+
+.item {
+  border: 2px solid black;
+  border-radius: 5px; /* Added margin radius to accordion items */
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+ 
+}
+
+.item:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.item h3 {
+  margin: 0;
+}
+
+.content {
+  margin-top: 5px;
+}

@@ -1,0 +1,59 @@
+import React, { useState } from "react";
+import data from "./data";
+import "./styles.css";
+
+const Accordion = () => {
+  const [selected, setSelected] = useState(null);
+  const [enableMultiSelection, setEnableMultiSelection] = useState(false);
+  const [multiple, setMultiple] = useState([]);
+
+  function handleSingleSelection(currentId) {
+    setSelected(currentId === selected ? null : currentId);
+    console.log(selected);
+  }
+
+  function handleMultipleSelection(currentId) {
+    let cpyMultiple = [...multiple];
+    const findCurIndex = cpyMultiple.indexOf(currentId);
+    if (findCurIndex === -1) cpyMultiple.push(currentId);
+    else cpyMultiple.splice(findCurIndex, 1);
+    setMultiple(cpyMultiple);
+  }
+
+  return (
+    <div className="wrapper">
+      <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
+        {enableMultiSelection ? "Disable Multi Selection" : "Enable Multi Selection"}
+      </button>
+      <div className="accordion">
+        {data && data.length > 0 ? (
+          data.map((dataItem) => {
+            const { question, id, answer } = dataItem;
+            return (
+              <div key={id}
+                onClick={
+                  enableMultiSelection
+                    ? () => handleMultipleSelection(id)
+                    : () => handleSingleSelection(id)
+                }
+                className="item"
+              >
+                <h3>{question}</h3>
+                <span>+</span>
+                {(enableMultiSelection && multiple.includes(id)) || selected === id ? (
+                  <div className="content">{answer}</div>
+                ) : null}
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            <h2>Data not found</h2>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Accordion;
