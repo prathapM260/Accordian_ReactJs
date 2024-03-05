@@ -1,14 +1,13 @@
 import React,{useState} from 'react';
 import './App.css';
 import Accordian from './components/Accordian';
+import RandomColor from './components/colorPicker';
 
 
 function App() {
-
-  const[selected,setSelected]=useState(null)
-
   return <div>
-    <Accordian/>
+    {/* <Accordian/> */}
+    <RandomColor/>
   </div>
 }
 
